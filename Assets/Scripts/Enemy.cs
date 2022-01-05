@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
   
     {
-        Vector3 away = Player.position+transform.position + new Vector3(0,4,0);
+        Vector3 away = Player.position+transform.position + new Vector3(0,1,0);
             if (collision.gameObject.CompareTag("bullet"))
             {
 
