@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GunMid : GunBase
 {
-
+    // INHERITANCE
     private void FixedUpdate()
     {
         Fire();

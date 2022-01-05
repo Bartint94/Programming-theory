@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GunBase : MonoBehaviour
 {
-   
+    // INHERITANCE
+    // POLYMORPHISM
     protected float shot;
     [SerializeField] protected Transform Cam;
     [SerializeField] protected GameObject bullet;
@@ -21,7 +22,7 @@ public class GunBase : MonoBehaviour
     }
    
    
-    protected virtual void Update()
+    private void Update()
     {
         look = Quaternion.LookRotation(Cam.forward, Vector3.up);
         transform.rotation = look;

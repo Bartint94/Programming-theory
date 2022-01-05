@@ -7,11 +7,12 @@ using UnityEngine.SceneManagement;
 public class TitlleScreen : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI Nick;
+    [SerializeField] GameObject min;
     private string m_nickName;
     public string nickName
     {   get { return m_nickName; }
         set
-        { if(Nick.text.Length>4)
+        { if(Nick.text.Length>5)
             {
                 m_nickName = Nick.text;
             }
@@ -23,10 +24,14 @@ public class TitlleScreen : MonoBehaviour
     }
     public void EnterName()
     {
-        if (Nick.text.Length > 4)
+        if (Nick.text.Length > 5)
         {
             SceneManager.LoadScene(1);
 
+        }
+        else
+        {
+            min.SetActive(true);
         }
         
 

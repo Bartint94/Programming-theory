@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class LightGun : GunBase
 {
-
+    // INHERITANCE
+    
     private void FixedUpdate()
     {
         Fire();

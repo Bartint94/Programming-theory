@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BaseBullets : MonoBehaviour
 {
-
-    Rigidbody rb;
+    // POLYMORPHISM
+    protected Rigidbody rb;
     
     protected void Awake()
     {

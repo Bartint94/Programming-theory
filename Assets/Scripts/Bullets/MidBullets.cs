@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class MidBullets : BaseBullets
 {
-     void Start()
+    // INHERITANCE
+    // POLYMORPHISM
+    void Start()
     {
         Power();
+    }
+    protected override void Power()
+    {
+        float power = 7000f;
+        rb.AddRelativeForce(Vector3.forward * power * Time.deltaTime, ForceMode.Impulse);
     }
 
 }
