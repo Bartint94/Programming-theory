@@ -1,0 +1,10 @@
+[api-updater (non-obsolete-error-filter)] 05.01.2022 01:11:37 : Starting C:/Users/borow/OneDrive/Dokumenty/My Games/2020.3.25f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 1468,6839ms
+moved types parse time: 104ms
+candidates parse time : 1ms
+C# parse time         : 902ms
+candidates check time : 64ms
+console write time    : 1ms
+

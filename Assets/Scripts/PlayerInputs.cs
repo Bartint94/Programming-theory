@@ -26,6 +26,7 @@ public class PlayerInputs : MonoBehaviour
     {
         actions.Enable();
         actions.Gameplay.Shoot.performed += OnShot;
+        actions.Gameplay.Shoot.canceled += OnShot;
     }
     public void OnShot(InputAction.CallbackContext cont)
     {
