@@ -6,15 +6,21 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject lGun;
     [SerializeField] GameObject mGun;
-    public List<GameObject> enemyPerfab = new List<GameObject>();
+    
     void Start()
     {
-        EnemySpawn();
+        GunChoice();
     }
-    void EnemySpawn()
+    void GunChoice()
     {
-
-        Instantiate(enemyPerfab[Random.Range(0,enemyPerfab.Count)],gameObject.transform.position,transform.rotation);
+        if(MenuManager.Instance.gunNr==2)
+        {
+            mGun.gameObject.SetActive(true);
+        }
+        else
+        {
+            lGun.gameObject.SetActive(true);
+        }
     }
     
     void Update()

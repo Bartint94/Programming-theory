@@ -9,6 +9,7 @@ public class TitlleScreen : MonoBehaviour
     [SerializeField] TextMeshProUGUI Nick;
     [SerializeField] GameObject min;
     private string m_nickName;
+    
     public string nickName
     {   get { return m_nickName; }
         set
@@ -18,9 +19,13 @@ public class TitlleScreen : MonoBehaviour
             }
         }
     }
-    void Start()
+    public void GunLight()
     {
-        
+        MenuManager.Instance.gunNr = 1;
+    }
+    public void GunMid()
+    {
+        MenuManager.Instance.gunNr = 2;
     }
     public void EnterName()
     {
@@ -36,9 +41,7 @@ public class TitlleScreen : MonoBehaviour
         
 
     }
-    
-    void Update()
-    {
-        Debug.Log(m_nickName);
-    }
+   
+
+
 }
