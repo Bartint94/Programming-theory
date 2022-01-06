@@ -12,7 +12,7 @@ public class MidBullets : BaseBullets
     }
     protected override void Power()
     {
-        float power = 7000f;
+        float power = 25000f;
         rb.AddRelativeForce(Vector3.forward * power * Time.deltaTime, ForceMode.Impulse);
     }
 

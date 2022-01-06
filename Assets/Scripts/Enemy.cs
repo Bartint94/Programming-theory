@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float Speed_f = 2;
     Animator anim;
     bool death_b = false;
-    // Start is called before the first frame update
+    public float angle;
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
             if (collision.gameObject.CompareTag("bullet"))
             {
 
-            transform.Translate(away*Time.fixedDeltaTime*hit,Space.World);
+            transform.Translate(away*Time.deltaTime*hit,Space.World);
             
             Speed_f = 0;
             death_b = true;
@@ -33,8 +33,19 @@ public class Enemy : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    
     void Update()
+    {
+        angle = transform.localRotation.z;
+        if (angle>0.3f)
+        {
+            Speed_f = 0f;
+        }
+
+        MoveEnemy();
+
+    }
+    private void MoveEnemy()
     {
         transform.Translate(Vector3.forward * Speed_f * Time.deltaTime, Space.Self);
         anim.SetFloat("Speed_f", Speed_f);

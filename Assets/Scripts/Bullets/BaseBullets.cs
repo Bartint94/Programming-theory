@@ -14,7 +14,7 @@ public class BaseBullets : MonoBehaviour
   
     protected virtual void Power()
     {
-        float power = 5000f;
+        float power = 10000f;
     rb.AddRelativeForce(Vector3.forward * power * Time.deltaTime, ForceMode.Impulse);
     }
  
