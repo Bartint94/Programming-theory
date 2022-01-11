@@ -42,13 +42,18 @@ public class Enemy : MonoBehaviour
             Speed_f = 0f;
         }
 
-        MoveEnemy();
+       
 
     }
     private void MoveEnemy()
     {
-        transform.Translate(Vector3.forward * Speed_f * Time.deltaTime, Space.Self);
+        Vector3 directionMove = Player.position;
+        rb.AddForce(directionMove * Speed_f, ForceMode.Acceleration);
         anim.SetFloat("Speed_f", Speed_f);
         anim.SetBool("Death_b", death_b);
+    }
+    private void FixedUpdate()
+    {
+        MoveEnemy();
     }
 }
