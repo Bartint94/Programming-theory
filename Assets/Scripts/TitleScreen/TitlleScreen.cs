@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class TitlleScreen : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI Nick;
+    [SerializeField] TextMeshProUGUI gunChoice;
     [SerializeField] GameObject min;
     private string m_nickName;
     
@@ -17,6 +18,17 @@ public class TitlleScreen : MonoBehaviour
             {
                 m_nickName = Nick.text;
             }
+        }
+    }
+    public void GunChoice()
+    {
+        if (gunChoice.text == "Light Gun")
+        {
+            MenuManager.Instance.gunNr = 1;
+        }
+        else if (gunChoice.text == ("Mid Gun"))
+        {
+            MenuManager.Instance.gunNr = 2;
         }
     }
     public void GunLight()
@@ -41,7 +53,10 @@ public class TitlleScreen : MonoBehaviour
         
 
     }
-   
+    private void Update()
+    {
+        GunChoice();
+    }
 
 
 }
