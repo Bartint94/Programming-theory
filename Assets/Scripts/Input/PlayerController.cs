@@ -4,20 +4,46 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+
     float vertic;
     float horiz;
+    float jump;
+    Vector3 directionMove;
 
-    [SerializeField] GameObject gun;
-    [SerializeField] GameObject cam;
+    [Header("Movement")]
     [SerializeField] float speed;
+    [SerializeField] float jumpForce;
+    [SerializeField] float dragGrounded;
+    [SerializeField] float dragAir;
+    bool isOnGround = true;
 
     Rigidbody rb;
-    Vector3 directionMove;
+    
 
     public void OnMove(float horiz,float vertic)
     {
         this.horiz = horiz;
         this.vertic = vertic;
+    }
+    public void OnLook(float xLook,float yLook)
+    {
+        //CameraController recive inputs for  now.
+    }
+    public void OnJump(float jump)
+    {
+        this.jump = jump;
+    }
+    private void DragControl()
+    {
+        if(isOnGround)
+        {
+            rb.drag = dragGrounded;
+        }
+        else
+        {
+            rb.drag = dragAir;
+        }
+       
     }
     private void Awake()
     {
@@ -26,12 +52,21 @@ public class PlayerController : MonoBehaviour
     }
     void Move()
     {
-        directionMove = (cam.transform.forward * vertic + cam.transform.right * horiz).normalized;
+        directionMove = (transform.forward * vertic + transform.right * horiz).normalized;
         rb.AddForce(directionMove * speed, ForceMode.Acceleration);
-        transform.rotation = cam.transform.rotation;
+        
+    }
+    void Jump()
+    {
+        rb.AddForce(Vector3.up * jumpForce * jump, ForceMode.Impulse);
     }
     private void FixedUpdate()
     {
         Move();
+        Jump();
+    }
+    private void Update()
+    {
+        DragControl();
     }
 }

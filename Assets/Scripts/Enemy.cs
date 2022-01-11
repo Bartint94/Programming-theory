@@ -19,11 +19,11 @@ public class Enemy : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
   
     {
-        Vector3 away = Player.position+transform.position + new Vector3(0,1,0);
+       
             if (collision.gameObject.CompareTag("bullet"))
             {
 
-            transform.Translate(away*Time.deltaTime*hit,Space.World);
+            
             
             Speed_f = 0;
             death_b = true;
@@ -47,8 +47,8 @@ public class Enemy : MonoBehaviour
     }
     private void MoveEnemy()
     {
-        Vector3 directionMove = Player.position;
-        rb.AddForce(directionMove * Speed_f, ForceMode.Acceleration);
+        
+        rb.AddForce(Player.position * Speed_f, ForceMode.Acceleration);
         anim.SetFloat("Speed_f", Speed_f);
         anim.SetBool("Death_b", death_b);
     }
