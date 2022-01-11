@@ -15,11 +15,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float jumpForce;
     [SerializeField] float dragGrounded;
     [SerializeField] float dragAir;
-    bool isOnGround = true;
+
+    [Header("Ground Detection")]
+    [SerializeField] LayerMask groundLayer;
+    [SerializeField] float groundDistance = 0.4f;
+    bool isOnGround;
 
     Rigidbody rb;
     
-
     public void OnMove(float horiz,float vertic)
     {
         this.horiz = horiz;
@@ -33,9 +36,18 @@ public class PlayerController : MonoBehaviour
     {
         this.jump = jump;
     }
+   
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
+    }
+
+
     private void DragControl()
     {
-        if(isOnGround)
+        if (isOnGround)
         {
             rb.drag = dragGrounded;
         }
@@ -43,30 +55,29 @@ public class PlayerController : MonoBehaviour
         {
             rb.drag = dragAir;
         }
-       
-    }
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
     }
     void Move()
     {
         directionMove = (transform.forward * vertic + transform.right * horiz).normalized;
         rb.AddForce(directionMove * speed, ForceMode.Acceleration);
-        
     }
     void Jump()
     {
-        rb.AddForce(Vector3.up * jumpForce * jump, ForceMode.Impulse);
+        if (isOnGround)
+        {
+            rb.AddForce(Vector3.up * jumpForce * jump, ForceMode.Impulse);
+        }
     }
     private void FixedUpdate()
     {
         Move();
         Jump();
     }
+
+
     private void Update()
     {
+        isOnGround = Physics.CheckSphere(transform.position , groundDistance, groundLayer);
         DragControl();
     }
 }

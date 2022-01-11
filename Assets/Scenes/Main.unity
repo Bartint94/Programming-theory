@@ -201,7 +201,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &385146258
 Transform:
   m_ObjectHideFlags: 0
@@ -979,7 +979,7 @@ Transform:
   - {fileID: 394160378}
   - {fileID: 394234278}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 97.427, z: 0}
 --- !u!4 &394203476
 Transform:
@@ -1721,7 +1721,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &486066335
 GameObject:
@@ -1755,7 +1755,7 @@ Transform:
   - {fileID: 116630903}
   - {fileID: 4659578211395503}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &529994279
 PrefabInstance:
@@ -1859,7 +1859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6953a43e2ffb3ba4c8474991f55a83a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cam: {fileID: 0}
+  Cam: {fileID: 963194228}
   bullet: {fileID: 2847563490282614414, guid: dc8c0f4ec1ec473468fa5d98c0b9d564, type: 3}
   Point: {fileID: 1106874260}
 --- !u!4 &572865187 stripped
@@ -2054,38 +2054,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 22.934, y: 39.205, z: 45.737}
---- !u!1 &711718391
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 711718392}
-  m_Layer: 0
-  m_Name: Enemy
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &711718392
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 711718391}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -34.10842, y: 1.4795005, z: 18}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &880845336
 GameObject:
   m_ObjectHideFlags: 0
@@ -2338,7 +2308,7 @@ GameObject:
   - component: {fileID: 1032031185}
   - component: {fileID: 1032031184}
   - component: {fileID: 1032031183}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2508,7 +2478,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106874259}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.003000021, y: -0.013000011, z: 0.896}
+  m_LocalPosition: {x: -0.003000021, y: -0.05, z: 1.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 567935987}
@@ -2557,7 +2527,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &1476518219
 SkinnedMeshRenderer:
@@ -3027,10 +2997,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c08a83ccec93d84b93a7296b261ee22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
-  jumpForce: 30
+  speed: 60
+  jumpForce: 60
   dragGrounded: 6
-  dragAir: 0
+  dragAir: 3
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  groundDistance: 0.1
 --- !u!65 &1490114758
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3042,8 +3016,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 3.0191364, z: 1}
-  m_Center: {x: 0, y: 1.5194511, z: 0}
+  m_Size: {x: 1, y: 2.9208088, z: 1}
+  m_Center: {x: 0, y: 1.5241454, z: 0}
 --- !u!1 &1490114759
 GameObject:
   m_ObjectHideFlags: 0
@@ -3566,7 +3540,7 @@ Transform:
   - {fileID: 989642795}
   - {fileID: 963194228}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1490470117
 Transform:
